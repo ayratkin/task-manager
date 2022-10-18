@@ -1,10 +1,13 @@
 import './App.scss';
+import Board from './components/Board/Board';
 
 function App() {
   return (
-    <div className='div1'>
-      Приложение работает
-    </div>
+    <>
+      <Board>
+
+      </Board>
+    </>
   );
 }
 
