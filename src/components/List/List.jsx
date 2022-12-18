@@ -12,7 +12,11 @@ const List = (props) => {
                 {props.list_title}
             </h3>
             <Cards />
-            <button className={style.add_card_btn}>Add</button>
+            
+            <form className={style.add_card_btn}>
+                <input type="text" />
+                <button> add</button>
+            </form>
         </div>
     )
 }
