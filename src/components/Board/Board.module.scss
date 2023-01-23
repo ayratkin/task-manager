@@ -1,6 +1,14 @@
 .board {
-    width: 100%;
-    height: 95vh;
-    padding: 10px;
-    border: 4px dotted gray;
+}
+
+.cards {
+  display: flex;
+}
+
+.addCardBtnContainer {
+  margin: 10px;
+}
+
+.addCardBtn {
+  padding: 5px;
 }

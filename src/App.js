@@ -1,12 +1,10 @@
 import './App.scss';
-import Board from './components/Board/Board';
+import Board from "./components/Board/Board";
 
 function App() {
   return (
     <>
-      <Board>
-
-      </Board>
+			<Board/>
     </>
   );
 }
