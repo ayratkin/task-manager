@@ -2,7 +2,7 @@ import styles from './Card.module.scss'
 import Task from "../Task/Task";
 import {useDispatch, useSelector} from "react-redux";
 import React from "react";
-import {addTask, changeTitleText} from "../../redux/cardSlice";
+import {addTask, changeTitleText} from "../../redux/cardSlice.ts";
 
 const Card = (props) => {
 

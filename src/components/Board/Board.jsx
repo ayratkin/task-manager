@@ -1,7 +1,7 @@
 import styles from './Board.module.scss'
 import Card from "../Card/Card";
 import {useDispatch, useSelector} from "react-redux";
-import {addCard} from "../../redux/cardSlice";
+import {addCard} from "../../redux/cardSlice.ts";
 
 const Board = () => {
 
