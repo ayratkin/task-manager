@@ -8,8 +8,6 @@ const Board = () => {
 	const cards = useSelector((state) => state.cards.Cards)
 	const dispatch = useDispatch()
 
-	const incrementCardId = () => cards.length
-
 	let cardItems = cards.map((card) => {
 		return <Card
 			cardID={card.id}
@@ -27,11 +25,7 @@ const Board = () => {
 					<div className={styles.addCardBtnContainer}>
 						<button
 							className={styles.addCardBtn}
-							onClick={() => dispatch(addCard(
-								{
-									cardId: incrementCardId(),
-								}
-							))}>
+							onClick={() => dispatch(addCard())}>
 							+ Add another list
 						</button>
 					</div>

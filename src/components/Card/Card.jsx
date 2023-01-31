@@ -9,19 +9,6 @@ const Card = (props) => {
 	const dispatch = useDispatch();
 	const cards = useSelector((state) => state.cards.Cards);
 
-	// Возвращает количество "тасков" (задач) в приложении.
-	const incrementTaskId = () => {
-		let newId = 0;
-		let tasksCount = 0;
-
-		for (let i = 0; i < cards.length; i++) {
-			newId += 1;
-			tasksCount += cards[i].tasks.length
-		}
-
-		return tasksCount
-	}
-
 	const tasks = props.tasks.map((task) => {
 		return <Task taskText={task.text} taskId={task.id} cardId={props.cardID}/>
 	})
@@ -38,7 +25,6 @@ const Card = (props) => {
 
 	const addNewTask = () => {
 		dispatch(addTask({
-			taskId: incrementTaskId(),
 			cardId: props.cardID,
 		}))
 	}

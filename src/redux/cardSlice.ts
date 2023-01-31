@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 let id = 0
-const getId = () => id + 1
+const getId = () => id += 1
 
 const cardSlice = createSlice({
 	name: "card",
@@ -73,7 +73,7 @@ const cardSlice = createSlice({
 
 		addCard(state, action) {
 			state.Cards.push({
-				id: action.payload.cardId,
+				id: getId(),
 				title: '',
 				tasks: [],
 			})
@@ -91,7 +91,7 @@ const cardSlice = createSlice({
 
 		addTask(state, action) {
 			const newTask = {
-				id: action.payload.taskId,
+				id: getId(),
 				text: '',
 			}
 
