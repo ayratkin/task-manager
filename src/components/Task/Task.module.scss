@@ -1,9 +1,33 @@
 .task {
+  //position: relative;
   margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  animation: shows 0.5s;
+
+  &:hover .deleteTaskBtn {
+    display: block;
+  }
+}
+
+.deleteTaskBtn {
+  display: none;
+  border: none;
+}
+
+.trashImg {
+  //position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 0;
+  top: 0;
+
 }
 
 .taskInput {
-  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+  width: 100%;
   border: none;
   outline: none;
   padding: 7px;
@@ -11,6 +35,14 @@
   border-radius: 3px;
   margin-bottom: 5px;
   box-shadow: 0 3px 2px -2px gray;
-  transition: 0.3s all ease;
 }
 
+@keyframes shows {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

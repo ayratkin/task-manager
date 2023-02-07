@@ -6,6 +6,23 @@
   padding: 7px;
   margin: 10px;
   border-radius: 10px;
+  cursor: grab;
+  animation: shows 0.5s;
+}
+
+@keyframes shows {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.cardHeader {
+  align-items: flex-start;
+  display: flex;
 }
 
 .cardTitle {

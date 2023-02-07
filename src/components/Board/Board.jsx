@@ -8,11 +8,13 @@ const Board = () => {
 	const cards = useSelector((state) => state.cards.Cards)
 	const dispatch = useDispatch()
 
+
 	let cardItems = cards.map((card) => {
 		return <Card
 			cardID={card.id}
 			cardTitle={card.title}
 			tasks={card.tasks}
+			draggable={true}
 		/>
 	})
 

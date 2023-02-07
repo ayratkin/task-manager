@@ -1,6 +1,7 @@
 import styles from './Task.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import React from "react";
+import trash from '../../images/trash.svg'
 import {changeTaskText, deleteTask} from "../../redux/cardSlice.ts";
 
 const Task = (props) => {
@@ -27,7 +28,7 @@ const Task = (props) => {
 
 	return (
 		<>
-		<div className="task">
+		<div className={styles.task}>
 			<input
 					className={styles.taskInput}
 					type="text"
@@ -36,9 +37,14 @@ const Task = (props) => {
 					ref={myRef}
 					onChange={changeText}
 			/>
-			<button 
+			<button
+				className={styles.deleteTaskBtn}
 				onClick={deleteMyTask}>
-				Delete
+				<img
+					src={trash}
+					alt=""
+					className={styles.trashImg}
+				/>
 			</button>
 		</div>
 		</>
