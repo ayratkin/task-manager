@@ -2,17 +2,17 @@ import styles from './Card.module.scss'
 import Task from '../Task/Task'
 import { useDispatch, useSelector } from 'react-redux'
 import React from 'react'
-import { addTask, changeTitleText, deleteCard } from '../../redux/cardSlice.ts'
+import { addTask, changeTitleText, deleteCard, setCurrentCard, setCardsOrders } from '../../redux/cardSlice.ts'
 
 const Card = (props) => {
   const dispatch = useDispatch()
 
-  const tasks = props.tasks.map((task) => {
+  const tasks = props.cardData.tasks.map((task) => {
     return (
       <Task
         taskText={task.text}
         taskId={task.id}
-        cardId={props.cardID}
+        cardId={props.cardData.id}
       />
     )
   })
@@ -24,7 +24,7 @@ const Card = (props) => {
     dispatch(
       changeTitleText({
         text: myRef.current.value,
-        cardId: props.cardID,
+        cardId: props.cardData.id,
       }),
     )
   }
@@ -32,7 +32,7 @@ const Card = (props) => {
   const addNewTask = () => {
     dispatch(
       addTask({
-        cardId: props.cardID,
+        cardId: props.cardData.id,
       }),
     )
   }
@@ -40,14 +40,15 @@ const Card = (props) => {
   const deleteMyCard = () => {
     dispatch(
       deleteCard({
-        cardId: props.cardID,
+        cardId: props.cardData.id,
       }),
     )
   }
 
   // Взяли карточку
-  function dragStartHandler(e, cardTitle) {
-    console.log('drag start', cardTitle)
+  function dragStartHandler(e, cardData) {
+    // console.log('drag start', cardData)
+    dispatch(setCurrentCard(cardData))
   }
 
   // Вышли за пределы другой карточки
@@ -62,9 +63,10 @@ const Card = (props) => {
   }
 
   // Отпустили карточку
-  function dragDropHandler(e, cardTitle) {
+  function dragDropHandler(e, droppedCardData) {
+    // console.log(droppedCardData)
+    dispatch(setCardsOrders(droppedCardData))
     e.preventDefault()
-    console.log('drag drop', cardTitle)
   }
 
   return (
@@ -72,18 +74,18 @@ const Card = (props) => {
       <div
         className={styles.card}
         draggable={true}
-        onDragStart={(e) => dragStartHandler(e, props.cardTitle)}
+        onDragStart={(e) => dragStartHandler(e, props.cardData)}
         onDragLeave={(e) => dragLeaveHandler(e)}
         onDragEnd={(e) => dragEndHandler(e)}
         onDragOver={(e) => dragOverHandler(e)}
-        onDrop={(e) => dragDropHandler(e, props.cardTitle)}
+        onDrop={(e) => dragDropHandler(e, props.cardData)}
       >
         <div className={styles.cardHeader}>
           <input
             className={styles.cardTitle}
             type='text'
             ref={myRef}
-            value={props.cardTitle}
+            value={props.cardData.title}
             placeholder={'Enter list title...'}
             onChange={changeText}
           />

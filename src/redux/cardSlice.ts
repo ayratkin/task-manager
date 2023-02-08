@@ -4,22 +4,22 @@ let id = 0
 const getId = () => (id += 1)
 
 const cardSlice = createSlice({
-  name: 'card',
+  name: 'cards',
   initialState: {
-    currentCard: null,
+    currentCard: 1,
     Cards: [
       {
         id: getId(),
         order: 1,
-        title: 'В планах',
+        title: 'Утром',
         tasks: [
           {
             id: getId(),
-            text: 'Покормить кота',
+            text: 'Бегит',
           },
           {
             id: getId(),
-            text: 'Сходить в магазин',
+            text: 'Пресс качат',
           },
         ],
       },
@@ -27,15 +27,15 @@ const cardSlice = createSlice({
       {
         id: getId(),
         order: 2,
-        title: 'В работе',
+        title: 'Днем',
         tasks: [
           {
             id: getId(),
-            text: 'Убраться дома',
+            text: 'Турнек',
           },
           {
             id: getId(),
-            text: 'Постирать одежду',
+            text: 'Пресс качат',
           },
         ],
       },
@@ -43,15 +43,15 @@ const cardSlice = createSlice({
       {
         id: getId(),
         order: 3,
-        title: 'Завершено',
+        title: 'Вечером',
         tasks: [
           {
             id: getId(),
-            text: 'Приготовить ужин',
+            text: 'Турнек',
           },
           {
             id: getId(),
-            text: 'Почистить компьютер',
+            text: 'Анжуманя',
           },
         ],
       },
@@ -76,6 +76,10 @@ const cardSlice = createSlice({
           })
         }
       })
+    },
+
+    setCurrentCard(state, action) {
+      state.currentCard = action.payload
     },
 
     addCard(state, action) {
@@ -115,8 +119,38 @@ const cardSlice = createSlice({
         }
       })
     },
+
+    setCardsOrders(state, action) {
+      const droppedCard = action.payload // Карточка, в которую перемещаем взятую карточку
+
+      // Меняем местами порядковые значения взятой карточки и
+      // карточки, в которую вкладываем, местами.
+      state.Cards.forEach((card) => {
+        if (card.id == droppedCard.id) {
+          card.order = state.currentCard.order
+        }
+
+        if (card.id == state.currentCard.id) {
+          card.order = droppedCard.order
+        }
+      })
+
+      // Сортировка массива по возврастанию значения order: порядкового номера карточки
+      state.Cards.sort(function (a, b) {
+        return a.order - b.order
+      })
+    },
   },
 })
 
 export default cardSlice.reducer
-export const { addCard, addTask, deleteTask, changeTitleText, changeTaskText, deleteCard } = cardSlice.actions
+export const {
+  addCard,
+  addTask,
+  deleteTask,
+  changeTitleText,
+  changeTaskText,
+  deleteCard,
+  setCurrentCard,
+  setCardsOrders,
+} = cardSlice.actions
