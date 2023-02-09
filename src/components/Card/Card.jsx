@@ -89,7 +89,7 @@ const Card = (props) => {
             placeholder={'Enter list title...'}
             onChange={changeText}
           />
-          <button onClick={deleteMyCard}>-</button>
+          <a href="#" onClick={deleteMyCard} className={styles.close}></a>
         </div>
         <div className={styles.tasks}>{tasks}</div>
         <button
