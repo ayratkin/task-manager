@@ -64,7 +64,6 @@ const Card = (props) => {
 
   // Отпустили карточку
   function dragDropHandler(e, droppedCardData) {
-    // console.log(droppedCardData)
     dispatch(setCardsOrders(droppedCardData))
     e.preventDefault()
   }

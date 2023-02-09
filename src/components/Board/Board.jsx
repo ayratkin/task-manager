@@ -22,14 +22,7 @@ const Board = () => {
         <p>Board</p>
         <div className={styles.cards}>
           {cardItems}
-          <div className={styles.addCardBtnContainer}>
-            <button
-              className={styles.addCardBtn}
-              onClick={() => dispatch(addCard())}
-            >
-              + Add another list
-            </button>
-          </div>
+              <div href="" onClick={() => dispatch(addCard())} className={styles.close}></div>
         </div>
       </div>
     </>
