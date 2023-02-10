@@ -1,16 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 let id = 0
-const getId = () => (id += 1)
+const getId = () => id += 1
+
+let order = 0
+const getOrder = () => order += 1
 
 const cardSlice = createSlice({
   name: 'cards',
   initialState: {
-    currentCard: 1,
+    currentCard: null,
+    boardTitle: 'Упражняня на севодня',
     Cards: [
       {
         id: getId(),
-        order: 1,
+        order: getOrder(),
         title: 'Утром',
         tasks: [
           {
@@ -26,7 +30,7 @@ const cardSlice = createSlice({
 
       {
         id: getId(),
-        order: 2,
+        order: getOrder(),
         title: 'Днем',
         tasks: [
           {
@@ -42,7 +46,7 @@ const cardSlice = createSlice({
 
       {
         id: getId(),
-        order: 3,
+        order: getOrder(),
         title: 'Вечером',
         tasks: [
           {
@@ -58,6 +62,10 @@ const cardSlice = createSlice({
     ],
   },
   reducers: {
+    changeBoardTitle(state, action) {
+      state.boardTitle = action.payload.text
+    },
+
     changeTitleText(state, action) {
       state.Cards.forEach((card) => {
         if (card.id == action.payload.cardId) {
@@ -85,7 +93,7 @@ const cardSlice = createSlice({
     addCard(state, action) {
       state.Cards.push({
         id: getId(),
-        order: 4,
+        order: getOrder(),
         title: '',
         tasks: [],
       })
@@ -153,4 +161,5 @@ export const {
   deleteCard,
   setCurrentCard,
   setCardsOrders,
+  changeBoardTitle,
 } = cardSlice.actions
