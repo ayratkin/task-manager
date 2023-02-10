@@ -1,53 +1,21 @@
 .board {
+  padding: 10px;
+}
+
+.boardTitle {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+  border: none;
+  color: black;
+  margin-top: 0;
+  margin-bottom: 20px;
+  //width: 300px;
 }
 
 .cards {
   display: flex;
   align-items: flex-start;
-  padding: 10px;
   gap: 20px;
-}
-
-// .addCardBtnContainer {
-//   margin: 10px;
-// }
-
-// .addCardBtn {
-//   width: 25px;
-//   height: 25px;
-//   background-color: #ebecf0;;
-//   border: none;
-//   border-radius: 5px;
-//   padding: 5px;
-// }
-
-.close {
-  width: 14px;
-  height: 14px;
-  display: inline-block;
-  background-color: #ebecf0;
-  border-radius: 5px;
-  padding: 8px;
-  position: relative;
-  transition: 0.3s all ease;
-}
-.close:hover {
-  transition: 0.3s all ease;
-  background-color: gray;
-}
-
-.close:before, .close:after {
-  margin-left: 7px;
-  position: absolute;
-  content: ' ';
-  height: 14px;
-  width: 2px;
-  background-color: rgb(159, 159, 159);
-}
-.close:before {
-  transform: rotate(90deg);
-}
-
-.close:hover .close:after {
-  background-color: black;
 }
